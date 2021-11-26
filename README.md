@@ -13,8 +13,10 @@ entrypoint.sh to do this.
 
 * `./build.sh` will build your image.
  
-For my usecase, I store containers in /var/docker/<container> and data files in
-/var/docker/<container>/data.  You will need to update your dirs accordingly.
+For my usecase, I store containers in /var/docker/<i>container</i> and data files in
+/var/docker/<i>container</i>/data.  You will need to update your dirs
+accordingly for all the commands below.
+
 <b>Also, copy your le-chain.pem to your data dir</b>. 
 
 * `docker run --rm -v /var/docker/cloudflared/data:/etc/cloudflared -v /var/docker/cloudflared/data:/root/.cloudflared cloudflared login`
