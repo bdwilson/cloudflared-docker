@@ -1,8 +1,8 @@
 tunnel: xxxx-aaaaa-dddd-xxxx
 credentials-file: /etc/cloudflared/xxxx-aaaaa-dddd-xxxx.json
 
-# cloudflared tunnel create home
-# for i in `cat config.yml  | grep hostname | awk -F': ' '{print $2}' | sort |uniq`; do cloudflared tunnel route dns home $i ; done
+# cloudflared tunnel create mytunnel
+# for i in `cat config.yml  | grep hostname | awk -F': ' '{print $2}' | sort # |uniq`; do cloudflared tunnel route dns mytunnel $i ; done
 # https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/config
 # 
 ingress:
