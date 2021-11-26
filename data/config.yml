@@ -1,0 +1,21 @@
+tunnel: xxxx-aaaaa-dddd-xxxx
+credentials-file: /etc/cloudflared/xxxx-aaaaa-dddd-xxxx.json
+
+# cloudflared tunnel create home
+# for i in `cat config.yml  | grep hostname | awk -F': ' '{print $2}' | sort |uniq`; do cloudflared tunnel route dns home $i ; done
+# https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/config
+# 
+ingress:
+  - hostname: hubitat.mydomain.com 
+    service: http://192.168.1.100:80
+  - hostname: plex.mydomain.com
+    service: http://192.168.1.102:32400
+  - hostname: nodered.mydomain.com
+    service: http://192.168.1.103:1880
+  - hostname: unifi.mydomain.com
+    service: https://192.168.1.104:8443
+    originRequest:
+      originServerName: "unifi.mydomain.com"
+  - hostname: homebridge.mydomain.com
+    service: http://192.168.1.105:8085
+  - service: http_status:404
