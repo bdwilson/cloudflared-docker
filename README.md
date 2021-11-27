@@ -42,6 +42,6 @@ Now run your tunnel
 Іf you want to run this as a docker container so that it starts on reboot, you
 can do it this way. This will create a container called cloudflared. 
 
-* `docker run -d --restart unless-stopped -v /var/docker/cloudflared/data:/etc/cloudflared --v /var/docker/cloudflared/data:/root/.cloudflared --name cloudflared cloudflared run`
+* `docker run -d --restart unless-stopped -v /var/docker/cloudflared/data:/etc/cloudflared -v /var/docker/cloudflared/data:/root/.cloudflared --name cloudflared cloudflared run`
 
 Inspired by the [msnelling/docker-cloudflared](https://github.com/msnelling/docker-cloudflared) container.
