@@ -7,17 +7,11 @@ This install is for tunneling multiple endpoints specified in a config.yml
 file. To find a guide on this, please [see this
 guide](https://omar2cloud.github.io/cloudflare/cloudflared/cloudflare/). 
  
-For cloudflared to trust tunneling to Let's Encrypt endpoints, you need to pass
-it the LE intermediate (or updated cacerts on your endpoint). I've updated
-entrypoint.sh to do this.
-
 * `./build.sh` will build your image.
  
 For my usecase, I store containers in /var/docker/<i>container</i> and data files in
 /var/docker/<i>container</i>/data.  You will need to update your dirs
 accordingly for all the commands below.
-
-<b>Also, copy your le-chain.pem to your data dir</b>. 
 
 * `docker run --rm -v /var/docker/cloudflared/data:/etc/cloudflared -v /var/docker/cloudflared/data:/root/.cloudflared cloudflared login`
 
@@ -32,6 +26,12 @@ docs on creating your config.yml and <b>storing it in the data directory</b>. On
 complete, add your DNS routes and then run your tunnel (<b>mytunnel</b> in this
 case; you'll need to change myapp.mydomain to match the names you've
 specified in your config.yml. A sample is provided for you. 
+
+Note, if you're planning on tunneling [Unifi
+Controller](https://github.com/bdwilson/unifi-letsencrypt-cloudflare) traffic,
+you will need a legit certificate on it. I have linked my script that will help
+you do this via Let's Encrypt. I've been unable to get cloudflared to accept a
+self-signed certificate. 
 
 * `docker run --rm -v /var/docker/cloudflared/data:/etc/cloudflared -v /var/docker/cloudflared/data:/root/.cloudflared cloudflared route dns mytunnel myapp.mydomain.com`
 
