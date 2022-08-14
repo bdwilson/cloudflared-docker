@@ -31,7 +31,12 @@ Note, if you're planning on tunneling [Unifi
 Controller](https://github.com/bdwilson/unifi-letsencrypt-cloudflare) traffic,
 you will need a legit certificate on it. I have linked my script that will help
 you do this via Let's Encrypt. I've been unable to get cloudflared to accept a
-self-signed certificate. 
+self-signed certificate. It also appears that you can resolve this issue without a trusted cert if you use the following setting in config.yml. Note the capital V as noted [here](https://github.com/cloudflare/cloudflared/issues/362#issuecomment-1214273515).
+<code>
+    originRequest:
+      connectTimeout: 10s
+      noTLSVerify: true
+</code>
 
 * `docker run --rm -v /var/docker/cloudflared/data:/etc/cloudflared -v /var/docker/cloudflared/data:/root/.cloudflared cloudflared route dns mytunnel myapp.mydomain.com`
 
