@@ -16,6 +16,8 @@ ingress:
     service: https://192.168.1.104:8443
     originRequest:
       originServerName: "unifi.mydomain.com"
+      connectTimeout: 10s
+      noTLSVerify: true
   - hostname: homebridge.mydomain.com
     service: http://192.168.1.105:8085
   - service: http_status:404
